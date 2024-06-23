@@ -1,0 +1,253 @@
+@font-face{
+    font-family: Null; src: url('/fonts/Null_Free.otf');
+}
+
+@font-face{
+    font-family: LucidityCondensed; src: url('/fonts/LucidityCondensed.otf');
+}
+
+body {
+    background-color: #38b6ff;
+    margin-top: 10px;
+}
+
+.notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+@keyframes revealTopToBottom {
+    0% {
+        clip-path: inset(0 0 100% 0); /* Start with content fully hidden */
+    }
+    100% {
+        clip-path: inset(0 0 0 0); /* Show all content */
+    }
+}
+
+h1{
+    font-family: "Null";
+    letter-spacing: 3px;
+}
+
+h2{
+    font-family: "LucidityCondensed";
+}
+
+p{
+    font-family: 'Alatsi';
+}
+
+#content {
+    position: relative;
+    animation: revealTopToBottom 1s ease-out forwards;
+    /* transition: opacity 1s ease-out; */
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#navbar {
+    list-style-type: none;
+    text-align: center;
+    width: 50%;
+    left: 25%;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    word-spacing: 100px;
+}
+
+#navBg {
+    background-color: white !important ;
+    padding: 2%;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 10px 10px 10px #52fa63;
+}
+
+#logo {
+    left: calc(50% - 150px);
+    position: relative;
+}
+
+#logo img{
+    width: 300px;
+}
+
+#navbar li {
+    display: inline-block;
+    font-family: "LucidityCondensed";
+}
+
+#navbar a {
+    text-decoration: none;
+    color: black;
+}
+
+#navbar li a {
+    transition: all 1s ease-out;
+}
+
+#navbar li a:visited {
+    color: #6C8e9b;
+}
+
+.taL {
+    width: 80%;
+    clear: both;
+}
+
+.taR {
+    text-align: right;
+    width: 80%;
+    float: right;
+}
+
+
+#socials {
+    margin-bottom: 30px;
+    list-style-type: none;
+    text-align: center;
+    left: 50%;
+    position: fixed;
+    bottom: 0;
+    width: 50%;
+    background-color: white;
+    box-shadow: 10px 10px 10px #52fa63;
+    z-index: 1000;
+    border-radius: 50px;
+    transform: translateX(-50%);
+    padding: 0;
+}
+
+#socials li {
+    display: inline-block;
+    margin: 0 3%;
+    padding: 2%;
+}
+
+#socials a{
+    color: black;
+}
+
+#socials a:visited{
+    color: black;
+}
+
+#footerSpace{
+    height: 10vh;
+}
+
+#team{
+    display: grid;
+    grid-template-columns:  repeat(4, 1fr);
+    grid-gap: 2%;
+}
+
+.image-container{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border: 2px solid black;
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 1s ease-out;
+}
+
+.image-container .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    color: white;
+    font-family: 'Alatsi';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    pointer-events: none; /* Make the overlay text non-interactive */
+}
+
+.image-container:hover {
+    z-index: 10; /* Bring the hovered image to the front */
+}
+
+.image-container:hover img {
+    transform: scale(1.1); /* Slightly scale up the image */
+}
+
+.image-container:hover .overlay {
+    opacity: 1; /* Show the overlay text */
+}
+
+#teamText p{
+    display: none;
+    margin-bottom: 18vh;
+}
+
+.contact-item {
+    display: inline-block;
+    width: 49%;
+}
+
+.contact-item a{
+    font-family: 'Alatsi';
+}
+
+/* Styles for tablets */
+@media (max-width: 1024px) {
+    body {
+        margin-top: 20px;
+    }
+    #content {
+        width: 66%;
+    }
+    #navbar{
+        word-spacing: 50px;
+        width: 66%;
+        left: 17%;
+    }
+    #socials{
+        width: 66%;
+    }
+}
+
+/* Styles for phones */
+@media (max-width: 768px) {
+    body {
+        margin-top: 50px;
+    }
+    #content {
+        width: 80%;
+    }
+    #socials{
+        width: 80%;
+    }
+
+    #team {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile layout */
+    }
+    #teamText p{
+        margin-bottom: auto;
+    }
+
+    #navbar{
+        word-spacing: 25px;
+        width: 80%;
+        left: 10%;
+    }
+}
