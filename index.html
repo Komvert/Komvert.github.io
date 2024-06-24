@@ -118,7 +118,9 @@
     var navbar = document.getElementById("navbar");
 
     navbar.addEventListener("mouseover", function() {
-        $("#navbar li a").css('font-size', "20px");
+        if (window.screen.width > 768){
+            $("#navbar li a").css('font-size', "20px");
+        }
     });
     navbar.addEventListener("mouseout", function() {
         $("#navbar li a").css('font-size', "16px");
