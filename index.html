@@ -50,11 +50,19 @@
 
     // Function to attach event listeners to dynamically loaded content
     function attachEventListeners() {
-        var imageContainers = document.querySelectorAll('.image-container');
+        var imageContainers = document.querySelectorAll('.image-container, .image-container2');
+    
         imageContainers.forEach((container, index) => {
             container.addEventListener('click', function() {
                 var teamlid = index + 1; // Calculate teamlid based on index
-                team(teamlid);
+                var mens = index + 1; // Calculate mens based on index
+
+                // Check if the clicked element belongs to team or mensen
+                if (container.classList.contains('image-container')) {
+                    team(teamlid);
+                } else if (container.classList.contains('image-container2')) {
+                    mensen(mens);
+                }
             });
         });
     }
@@ -210,6 +218,27 @@
         }
         
         document.getElementById("teamT").scrollIntoView({behavior: 'smooth'});
+    }
+
+    function mensen(mens) {
+
+        var allMensenText = document.getElementById('mensenText').querySelectorAll('p');
+        allMensenText.forEach(p => {
+            p.style.display = 'none';
+        })
+
+        switch (mens) {
+            case 1:
+                var maxTextElement = document.getElementById('max-text');
+                if (maxTextElement) {
+                    maxTextElement.style.display = 'block';
+                }
+                break;
+            default:
+                break;
+        }
+        
+        document.getElementById("mensenText").scrollIntoView({behavior: 'smooth'});
     }
 </script>
 </html>

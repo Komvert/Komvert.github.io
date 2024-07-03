@@ -184,7 +184,9 @@ p{
     height: 100%;
     object-fit: cover;
     transition: all 1s ease-out;
+    object-position: top;
 }
+
 
 .image-container .overlay {
     position: absolute;
@@ -218,6 +220,64 @@ p{
 #teamText p{
     display: none;
     margin-bottom: 18vh;
+}
+
+#mensen{
+    display: grid;
+    grid-template-columns:  repeat(4, 1fr);
+    grid-gap: 2%;
+}
+
+#mensenText p{
+    display: none;
+}
+
+.image-container2{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border: 2px solid black;
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.image-container2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 1s ease-out;
+    object-position: top;
+}
+
+
+.image-container2 .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    color: white;
+    font-family: 'Alatsi';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    pointer-events: none; /* Make the overlay text non-interactive */
+}
+
+.image-container2:hover {
+    z-index: 10; /* Bring the hovered image to the front */
+}
+
+.image-container2:hover img {
+    transform: scale(1.1); /* Slightly scale up the image */
+}
+
+.image-container2:hover .overlay {
+    opacity: 1; /* Show the overlay text */
 }
 
 .contact-item {
@@ -272,6 +332,10 @@ p{
         left: 10%;
     }
     
+    #mensen {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile layout */
+    }
+
     .video-wrapper video {
         object-fit: contain;
     }
