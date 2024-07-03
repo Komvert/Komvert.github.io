@@ -96,6 +96,27 @@ p{
     color: #6C8e9b;
 }
 
+.video-wrapper {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover; /* Scales video to cover container */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .taL {
     width: 80%;
     clear: both;
@@ -249,5 +270,9 @@ p{
         word-spacing: 15px;
         width: 80%;
         left: 10%;
+    }
+    
+    .video-wrapper video {
+        object-fit: contain;
     }
 }

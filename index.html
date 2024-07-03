@@ -18,6 +18,12 @@
     </ul>
     
     <br/>
+    <div class="video-wrapper">
+        <video id="werving" controls autoplay loop>
+            <source src="/vid/komvert-wervingsvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
     <main id="content"></main>
     
     <div id="footerSpace"></div>
@@ -71,6 +77,20 @@
                 const content = document.getElementById('content');
                 content.innerHTML = data;
 
+                // Check if loaded page is main.html
+                const wervingElement = document.getElementById('werving');
+                if (fetchPage === 'main.html') {
+                    wervingElement.style.display = 'block'; // Show video on main.html
+                    // Assuming you have a video element with controls:
+                    wervingElement.play(); // Play the video (if autoplay is not set)
+                    document.getElementById('socials').style.display = 'none';
+                } else {
+                    wervingElement.style.display = 'none'; // Hide video on other pages
+                    // Stop the video playback:
+                    wervingElement.pause();
+                    document.getElementById('socials').style.display = 'block';
+                }
+
                 // Apply animation after the content is inserted
                 content.style.animation = 'none';
                 content.classList.add('notransition'); // Disable transitions
@@ -100,6 +120,33 @@
         const page = event.state && event.state.page ? event.state.page : 'main.html'; // Default to main.html if no state
         loadContent(page, false); // Load content without updating history state on navigation
     });
+
+    // Function to update video position based on window dimensions
+    function updateVideoPosition() {
+        var video = document.getElementById('werving');
+        var videoWrapper = document.querySelector('.video-wrapper');
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+        var videoHeight = video.clientHeight;
+
+        // Check if video height exceeds window height
+        if (videoHeight > windowHeight) {
+            var topPosition = 'calc(50% - ' + (videoHeight - windowHeight)/2 + 'px)';
+            video.style.top = topPosition;
+        } else {
+            video.style.top = '50%'; // Center vertically
+        }
+
+        // Always center horizontally
+        video.style.left = '50%';
+        video.style.transform = 'translate(-50%, -50%)';
+    }
+
+    // Call initially and add event listener for window resize
+    setTimeout(updateVideoPosition, 300);
+
+    window.addEventListener('resize', updateVideoPosition);
+    window.addEventListener('orientationchange', updateVideoPosition);
 
     // Navigation links (navbar)
     document.querySelectorAll('#navbar a').forEach(link => {
